@@ -1,5 +1,9 @@
 # ClamAV S3 Mirror
 
+## Diagram
+
+![CodeBuild S3 Diagram](https://github.com/johnalvero/clamav-s3-mirror/blob/master/CodeBuild%20S3%20Mirror%20-%20Page%201.jpegg)
+
 ## Pre-requisites
 - 1 S3 Bucket for hosting the AWS CodeBuild files (buildspec.yml). Let's call this source bucket
 - 1 S3 Bucket where the ClamAV signature files will be uploaded. Let's call this target bucket
