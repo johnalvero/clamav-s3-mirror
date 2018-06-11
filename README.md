@@ -30,3 +30,6 @@ Make sure that the service role has permissions to upload to the target S3 bucke
 
 ## Setup daily run
 Once the project is successfully created, you may now setup Build Triggers to run it daily.
+
+## S3 Website hosting
+Enable the target bucket's website hosting and setup the correct public bucket policy.
