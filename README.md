@@ -35,7 +35,7 @@ Once the project is successfully created, you may now setup Build Triggers to ru
 Enable the target bucket's website hosting and setup the correct public bucket policy.
 
 ## Agent / Clients Config
-Tell freshclam to use the mirror. In /etc/freshclam.conf, make sure the following exists:
+Tell freshclam to use the mirror. In /etc/clamav/freshclam.conf, make sure the following exists:
 ```
 PrivateMirror <s3-url>
 ```
