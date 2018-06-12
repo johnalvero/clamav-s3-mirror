@@ -39,3 +39,4 @@ Tell freshclam to use the mirror. In /etc/freshclam.conf, make sure the followin
 ```
 PrivateMirror <s3-url>
 ```
+This overrides the DatabaseMirror configuration directive disabling DNS-based signature lookup.
