@@ -40,3 +40,6 @@ Tell freshclam to use the mirror. In /etc/freshclam.conf, make sure the followin
 PrivateMirror <s3-url>
 ```
 This overrides the DatabaseMirror configuration directive disabling DNS-based signature lookup.
+
+## For improvement
+If you want to go even further, you can setup AWS CloudFront in front of the S3 bucket serving the AV signatures.
