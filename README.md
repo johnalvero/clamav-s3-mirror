@@ -43,23 +43,10 @@ This step schedules a regular run of the codebuild project.
 
 Todo:
 aws iam create role
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "codebuild:StartBuild"
-            ],
-            "Resource": [
-                "arn:aws:codebuild:<region>:<account-no>:project/<codebuild-project-name>"
-            ]
-        }
-    ]
-}
-```
 aws cloudwatch put-rule
+```
+aws events put-rule --name "test-clamav-mirror-6hours" --schedule-expression "rate(6 hours)""
+```
 aws cloudwatch put-targets
 
 ## Setup website hosting on the target bucket
