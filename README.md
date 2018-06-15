@@ -41,6 +41,27 @@ At this point, you may already test the build process through CodeBuild service 
 # Setup a build trigger
 This step schedules a regular run of the codebuild project.
 
+Todo:
+aws iam create role
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "codebuild:StartBuild"
+            ],
+            "Resource": [
+                "arn:aws:codebuild:<region>:<account-no>:project/<codebuild-project-name>"
+            ]
+        }
+    ]
+}
+```
+aws cloudwatch put-rule
+aws cloudwatch put-targets
+
 ## Setup website hosting on the target bucket
 ```
 aws s3 website s3://<target-bucket>/ --index-document index.html
