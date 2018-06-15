@@ -4,25 +4,18 @@
 
 ![CodeBuild S3 Diagram](https://raw.githubusercontent.com/johnalvero/clamav-s3-mirror/master/diagram.jpeg)
 
-## Pre-requisites
-- 1 S3 Bucket for hosting the AWS CodeBuild files (buildspec.yml). Let's call this source bucket
-- 1 S3 Bucket where the ClamAV signature files will be uploaded. Let's call this target bucket
-- Zip and upload this repo to the source bucket
+## Create the buckets
+```
+# Source Bucket
+aws s3 mb s3://<source-bucket>
+
+# Target Bucket
+aws s3 mb s3://<target-bucket>
+```
 
 ## Create a CodeBuild Project
 ```
-Project Name: Type any name
-Source Provider: Amazon S3
-Bucket: <The source bucket name>
-S3 object key: <The object key to the zip file>
-Environment image: Use an image managed by AWS CodeBuild
-Build specification: Use the buildspec.yml in the source code root directory
-Buildspec name: buildspec.yml
-Certificate: Do not install any certificate
-Artifacts Type: No Artifacts
-Cache Type: No cache
-Service Role: Create a service role in your account
-VPC: No VPC
+
 ```
 
 ## Setup the CodeBuild Service Role
