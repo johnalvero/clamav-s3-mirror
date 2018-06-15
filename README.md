@@ -35,8 +35,7 @@ Edit the file create-project.json, update the file with the necessary parameters
 ```
 aws codebuild create-project --cli-input-json file://create-project.json
 ```
-
-
+At this point, you may already test the build process through CodeBuild service page in the AWS Management Console. If the the previous steps are done successfully, you should see files in the target bucket already after the build is finished.
 
 ## Agent / Clients Config
 Tell freshclam to use the mirror. In /etc/clamav/freshclam.conf, make sure the following exists:
