@@ -38,6 +38,9 @@ aws codebuild create-project --cli-input-json file://create-project.json
 ```
 At this point, you may already test the build process through CodeBuild service page in the AWS Management Console. If the the previous steps are done successfully, you should see files in the target bucket already after the build is finished.
 
+# Setup a build trigger
+This step schedules a regular run of the codebuild project.
+
 ## Setup website hosting on the target bucket
 ```
 aws s3 website s3://<target-bucket>/ --index-document index.html
@@ -45,8 +48,8 @@ aws s3 website s3://<target-bucket>/ --index-document index.html
 # Modify target-bucket-policy.json to suit your configuration
 aws s3api put-bucket-policy --bucket <target-bucket> --policy file://target-bucket-policy.json
 ```
-
-
+# Assign a Route53 hostname
+This step is optional.
 
 ## Agent / Clients Config
 Tell freshclam to use the mirror. In /etc/clamav/freshclam.conf, make sure the following exists:
