@@ -5,6 +5,11 @@ env:
     AWS_DEFAULT_REGION: ap-southeast-1
 
 phases:
+  install:
+    commands:
+      - apt update -y
+      - apt-get install clamav libnet-dns-perl -y
+
   pre_build:
     commands:
       - echo Starting build...
@@ -12,10 +17,12 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - apt update
       - mkdir -p /tmp/clam
-      - apt-get install clamav libnet-dns-perl -y
       - perl clamdownloader.pl
       - ls -la /tmp/clam
-      - aws s3 sync /tmp/clam s3://<your-bucket>
       - echo Done uploading to S3 `date`
+
+artifacts:
+  files:
+    - /tmp/clam/*
+  discard-paths: yes
