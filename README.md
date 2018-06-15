@@ -4,6 +4,10 @@
 
 ![CodeBuild S3 Diagram](https://raw.githubusercontent.com/johnalvero/clamav-s3-mirror/master/diagram.jpeg)
 
+## Requirements
+  - AWS cli setup properly
+  - Clone this repo `git clone https://github.com/johnalvero/clamav-s3-mirror.git`
+
 ## Create the buckets
 ```
 # Source Bucket
@@ -12,20 +16,26 @@ aws s3 mb s3://<source-bucket>
 # Target Bucket
 aws s3 mb s3://<target-bucket>
 ```
+## Pack and send the source files to the source bucker
+```
+zip clamav-mirror.zip buildspec.yml clamdownloader.pl
+aws s3 cp clamav-mirror.zip s3://<source-bucket>
+```
+## Create the Service Role
+Open put-role-policy.json file and modify the `<source-bucket> and <target-bucket>` parameters.
+```
+# Create service role
+aws iam create-role --role-name <codebuild-clamav-mirror-role> --assume-role-policy-document file://create-role.json
+
+aws smi iam put-role-policy --role-name <codebuild-clamav-mirror-role> --policy-name CodeBuildServiceRolePolicy --policy-document file://put-role-policy.json
+```
 
 ## Create a CodeBuild Project
 ```
-
+aws codebuild create-project --cli-input-json file://create-project.json
 ```
 
-## Setup the CodeBuild Service Role
-Make sure that the service role has permissions to upload to the target S3 bucket.
 
-## Setup daily run
-Once the project is successfully created, you may now setup Build Triggers to run it daily.
-
-## S3 Website hosting
-Enable the target bucket's website hosting and setup the correct public bucket policy.
 
 ## Agent / Clients Config
 Tell freshclam to use the mirror. In /etc/clamav/freshclam.conf, make sure the following exists:
