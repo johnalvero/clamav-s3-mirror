@@ -40,6 +40,9 @@ At this point, you may already test the build process through CodeBuild service 
 ## Setup website hosting on the target bucket
 ```
 aws s3 website s3://<target-bucket>/ --index-document index.html
+
+# Modify target-bucket-policy.json to suit your configuration
+aws s3api put-bucket-policy --bucket <target-bucket> --policy file://target-bucket-policy.json
 ```
 
 
