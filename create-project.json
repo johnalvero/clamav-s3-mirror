@@ -1,0 +1,29 @@
+{
+    "name": "<codebuild-project-name>", 
+    "description": "Creates an S3-based ClamAV Private Mirror", 
+    "source": {
+        "type": "S3", 
+        "location": "arn:aws:s3:::<source-bucket>/clamav-mirror.zip", 
+        "buildspec": "buildspec.yml"
+    }, 
+    "artifacts": {
+        "type": "S3", 
+        "location": "<target-bucket>", 
+        "name": "clam"
+    },
+    "environment": {
+        "type": "LINUX_CONTAINER", 
+        "image": "aws/codebuild/ubuntu-base:14.04", 
+        "computeType": "BUILD_GENERAL1_SMALL", 
+        "privilegedMode": false,
+        "environmentVariables": [
+          {
+            "name": "DEBIAN_FRONTEND",
+            "value": "noninteractive",
+            "type": "PLAINTEXT"
+          }
+        ]
+    },
+    "serviceRole": "arn:aws:iam::<aws-account-number>:role/<codebuild-clamav-mirror-role>",
+    "timeoutInMinutes": 5
+}
