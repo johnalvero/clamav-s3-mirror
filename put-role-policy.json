@@ -1,0 +1,46 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "CloudWatchLogsPolicy",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Sid": "S3GetObjectPolicy",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:GetObjectVersion"
+      ],
+      "Resource": [
+        "arn:aws:s3:::<source-bucket>",
+        "arn:aws:s3:::<source-bucket>/*"
+      ]
+    },
+    {
+      "Sid": "S3PutObjectPolicy",
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+	"s3:GetObject",
+        "s3:GetBucketTagging",
+        "s3:PutBucketTagging",
+        "s3:ListBucket",
+        "s3:GetBucketAcl",
+        "s3:GetBucketLocation"
+      ],
+      "Resource": [
+        "arn:aws:s3:::<target-bucket>",
+        "arn:aws:s3:::<target-bucket>/*"
+      ]
+    }
+  ]
+}
