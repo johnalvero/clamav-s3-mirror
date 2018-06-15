@@ -17,6 +17,7 @@ aws s3 mb s3://<source-bucket>
 aws s3 mb s3://<target-bucket>
 ```
 ## Pack and send the source files to the source bucker
+Before doing this step, make sure to update the target bucket location in buildspec.yml
 ```
 zip clamav-mirror.zip buildspec.yml clamdownloader.pl
 aws s3 cp clamav-mirror.zip s3://<source-bucket>
