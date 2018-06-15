@@ -27,7 +27,7 @@ Open put-role-policy.json file and modify the `<source-bucket> and <target-bucke
 # Create service role
 aws iam create-role --role-name <codebuild-clamav-mirror-role> --assume-role-policy-document file://create-role.json
 
-aws smi iam put-role-policy --role-name <codebuild-clamav-mirror-role> --policy-name CodeBuildServiceRolePolicy --policy-document file://put-role-policy.json
+aws iam put-role-policy --role-name <codebuild-clamav-mirror-role> --policy-name CodeBuildServiceRolePolicy --policy-document file://put-role-policy.json
 ```
 
 ## Create a CodeBuild Project
