@@ -24,7 +24,7 @@ aws s3 cp clamav-mirror.zip s3://<source-bucket>
 ## Create the Service Role
 Open put-role-policy.json file and modify the `<source-bucket> and <target-bucket>` parameters.
 ```
-# Create service role. Take note of the role ARN as this will be needed in the next command
+# Create service role. Take note of the role ARN as this will be needed in create-project.json
 aws iam create-role --role-name <codebuild-clamav-mirror-role> --assume-role-policy-document file://create-role.json
 
 aws iam put-role-policy --role-name <codebuild-clamav-mirror-role> --policy-name CodeBuildServiceRolePolicy --policy-document file://put-role-policy.json
