@@ -31,6 +31,7 @@ aws iam put-role-policy --role-name <codebuild-clamav-mirror-role> --policy-name
 ```
 
 ## Create a CodeBuild Project
+Edit the file create-project.json, update the file with the necessary parameters. The serviceRole parameter is the ARN from the create-role command.
 ```
 aws codebuild create-project --cli-input-json file://create-project.json
 ```
